@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Name:</strong>
+  <%= @facility.name %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @facility.description %>
 </p>
@@ -20,10 +25,6 @@
   <%= @facility.address %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @facility.user %>
-</p>
 
 <%= link_to 'Edit', edit_facility_path(@facility) %> |
 <%= link_to 'Back', facilities_path %>
