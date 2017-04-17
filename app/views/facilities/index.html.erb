@@ -1,35 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>My Facilities</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Equipments description</th>
-      <th>Producing capability</th>
-      <th>Address</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @facilities.each do |facility| %>
-      <tr>
-        <td><%= facility.description %></td>
-        <td><%= facility.equipments_description %></td>
-        <td><%= facility.producing_capability %></td>
-        <td><%= facility.address %></td>
-        <td><%= facility.user %></td>
-        <td><%= link_to 'Show', facility %></td>
-        <td><%= link_to 'Edit', edit_facility_path(facility) %></td>
-        <td><%= link_to 'Destroy', facility, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Facility', new_facility_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>My Facilities</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+            <% @facilities.each do |f| %>
+              <%= render "card",facility: f %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <br>
+      <%= link_to 'New Facility', new_facility_path %>
+    </div>
+  </div>
+</div>
