@@ -20,7 +20,7 @@
           <div class="media-section">
             <h2>Equipments Description:</h2>
             <p><%= @facility.equipments_description %></p>
-            <%= render partial: 'shared/calendar' %>
+            <%= render partial: 'shared/calendar', locals: {booking: @booking, booked_dates: @booked_dates } %>
           </div>
         </div>
         <div class="media-aside">
@@ -46,39 +46,3 @@
     </div>
   </div>
 </div>
-
-<%= content_for :js_calendar do %>
-  <script>
-
-  var booked_dates = <%= raw @booked_dates %>
-
-    $(document).ready(function() {
-      $('.daterange').daterangepicker({
-          autoUpdateInput: false,
-          locale: {
-              cancelLabel: 'Clear'
-          },
-
-          "isInvalidDate" : function(date){
-            for(var ii = 0; ii < booked_dates.length; ii++){
-              if (date.format('YYYY-MM-DD') == booked_dates[ii]){
-                return true;
-              }
-            }
-          }
-
-      });
-
-      $('.daterange').on('cancel.daterangepicker', function(ev, picker) {
-          $(this).val('');
-      });
-
-      $('.daterange').on('apply.daterangepicker', function(ev, picker){
-        $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
-        $('#booking_start_date').val(picker.startDate.format('DD-MM-YYYY'));
-        $('#booking_end_date').val(picker.endDate.format('DD-MM-YYYY'));
-      })
-
-    });
-  </script>
-<% end %>
