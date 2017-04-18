@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170418151518) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "photo"
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"
@@ -69,7 +70,6 @@ ActiveRecord::Schema.define(version: 20170418151518) do
     t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
-    t.string   "photo"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
