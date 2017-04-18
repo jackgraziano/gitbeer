@@ -4,6 +4,7 @@
   background-size: cover !important;
   color: white;
   position: relative;
+  padding: 10px;
 }
 .card-user {
   position: absolute;
@@ -40,4 +41,7 @@
 }
 .card-link:hover{
   opacity: 0.1;
+}
+.card-padding-botton{
+  padding-bottom: 20px;
 }
