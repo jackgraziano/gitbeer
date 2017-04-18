@@ -8,6 +8,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_attachment :photo
+
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   def self.find_for_facebook_oauth(auth)
@@ -30,9 +32,5 @@ class User < ApplicationRecord
 
     return user
   end
-
-
-
-  mount_uploader :photo, PhotoUploader
 
 end
