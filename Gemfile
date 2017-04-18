@@ -27,5 +27,7 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'carrierwave', '~> 0.11.2'
+gem 'cloudinary'
 gem 'devise'
 gem 'faker'
