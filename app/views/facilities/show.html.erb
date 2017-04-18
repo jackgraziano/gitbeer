@@ -11,11 +11,14 @@
               <strong>Name:</strong>
               <%= @facility.name %>
             </h1>
+            <% @facility.photos.each do |photo| %>
+              <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+            <% end %>
             <h2>Description</h2>
             <p><%= @facility.description %></p>
           </div>
           <div class="media-section">
-            <h2>Equipaments Description:</h2>
+            <h2>Equipments Description:</h2>
             <p><%= @facility.equipments_description %></p>
             <%= render partial: 'shared/calendar' %>
           </div>

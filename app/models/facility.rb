@@ -1,6 +1,7 @@
 class Facility < ApplicationRecord
   belongs_to :user
   has_many :bookings
+  has_attachments :photos, maximum: 5
 
   def booked_dates
     booked_dates = []
@@ -11,4 +12,5 @@ class Facility < ApplicationRecord
     end
     return booked_dates.flatten
   end
+
 end
