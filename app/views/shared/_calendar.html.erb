@@ -1,0 +1,14 @@
+<%= simple_form_for @booking do |f| %>
+
+  <%= f.input :date, input_html:
+      { class: "daterange", size: 10 },
+      as: :string, label:"Choose your dates!"
+  %>
+
+  <%= f.input :user_id, as: :hidden %>
+  <%= f.input :facility_id, as: :hidden %>
+  <%= f.input :start_date, as: :hidden, html_options:{id: 'start_date'} %>
+  <%= f.input :end_date, as: :hidden, html_options:{id: 'end_date'} %>
+
+<%= f.submit %>
+<% end %>

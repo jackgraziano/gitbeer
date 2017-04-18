@@ -29,3 +29,7 @@ end
 
 gem 'devise'
 gem 'faker'
+
+# calendar
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
