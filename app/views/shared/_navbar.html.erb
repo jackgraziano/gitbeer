@@ -21,7 +21,7 @@
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% if current_user.photo.path.nil? %>
+          <% if current_user.photo.nil? %>
              <%= image_tag "http://placehold.it/50x50", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
              <%= cl_image_tag current_user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
