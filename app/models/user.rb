@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :reviews, through: :bookings
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  mount_uploader :photo, PhotoUploader
+  has_attachment :photo
 end
