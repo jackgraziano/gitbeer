@@ -41,6 +41,8 @@ gem 'bootstrap-daterangepicker-rails'
 
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-twitter'
+# gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-oauth2', '~> 1.3.1'
 
