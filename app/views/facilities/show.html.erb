@@ -50,12 +50,23 @@
 <%= content_for :js_calendar do %>
   <script>
 
+  var booked_dates = <%= raw @booked_dates %>
+
     $(document).ready(function() {
       $('.daterange').daterangepicker({
           autoUpdateInput: false,
           locale: {
               cancelLabel: 'Clear'
+          },
+
+          "isInvalidDate" : function(date){
+            for(var ii = 0; ii < booked_dates.length; ii++){
+              if (date.format('YYYY-MM-DD') == booked_dates[ii]){
+                return true;
+              }
+            }
           }
+
       });
 
       $('.daterange').on('cancel.daterangepicker', function(ev, picker) {
