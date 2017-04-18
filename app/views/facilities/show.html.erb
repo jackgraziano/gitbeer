@@ -20,7 +20,7 @@
           <div class="media-section">
             <h2>Equipments Description:</h2>
             <p><%= @facility.equipments_description %></p>
-            <%= render partial: 'shared/calendar' %>
+            <%= render partial: 'shared/calendar', locals: {booking: @booking, booked_dates: @booked_dates } %>
           </div>
         </div>
         <div class="media-aside">
@@ -46,4 +46,3 @@
     </div>
   </div>
 </div>
-

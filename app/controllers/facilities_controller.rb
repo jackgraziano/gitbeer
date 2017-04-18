@@ -14,6 +14,7 @@ class FacilitiesController < ApplicationController
     @booking = Booking.new
     @booking.facility = @facility
     @booking.user = current_user
+    @booked_dates = Facility.find(params[:id]).booked_dates
   end
 
   # GET /facilities/new
