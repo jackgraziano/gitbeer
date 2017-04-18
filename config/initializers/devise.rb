@@ -276,16 +276,17 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   # ==> Declaring Facebook as provider
-  config.omniauth :facebook, "138109350061061", "c4b2f0cbf556018a0294085b3790b1e9",
-                  callback_url: "https://gitbeer.herokuapp.com/users/auth/facebook/callback"
 
-  Devise.setup do |config|
-    config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"],
-      scope: 'email',
-      info_fields: 'email, first_name, last_name',
-      image_size: 'square',  # 50x50, guaranteed ratio
-      secure_image_url: true
-  end
+  config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"],
+    scope: 'email',
+    info_fields: 'email, first_name, last_name',
+    image_size: 'square',  # 50x50, guaranteed ratio
+    secure_image_url: true
 
+  config.omniauth :linkedin, ENV["LINKEDIN_CLIENT_ID"], ENV["LINKEDIN_CLIENT_SECRET"]#,
+    # scope: 'email',
+    # info_fields: 'email, first_name, last_name',
+    # image_size: 'square',  # 50x50, guaranteed ratio
+    # secure_image_url: true
 
 end
