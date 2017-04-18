@@ -6,7 +6,7 @@
     <%= f.input :description %>
     <%= f.input :equipments_description %>
     <%= f.input :producing_capability %>
-    <%= f.input :address %>
+    <%= f.input :address, collection: @states %>
     <%= f.input :photos, as: :attachinary %>
   </div>
 

@@ -1,5 +1,6 @@
 class FacilitiesController < ApplicationController
   before_action :set_facility, only: [:show, :edit, :update, :destroy]
+  before_action :set_states, only: [:edit, :new]
   before_action :set_current_user
 
   # GET /facilities
@@ -8,6 +9,9 @@ class FacilitiesController < ApplicationController
     @facilities = Facility.where(user: current_user)
   end
 
+  def search
+    @facilities = Facility.where(address: params[:address])
+  end
   # GET /facilities/1
   # GET /facilities/1.json
   def show
@@ -73,6 +77,9 @@ class FacilitiesController < ApplicationController
       @facility = Facility.find(params[:id])
     end
 
+    def set_states
+      @states = %w(AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO)
+    end
     # UserID
     def set_current_user
       @current_user = current_user

@@ -1,0 +1,12 @@
+
+<div class="container">
+<p id="notice"><%= notice %></p>
+<h1>Facilities</h1>
+  <div class="row">
+    <% @facilities.each do |f| %>
+      <div class="col-xs-12 col-sm-4 card-padding-botton">
+        <%= render "card",facility: f %>
+      </div>
+    <% end %>
+  </div>
+</div>
