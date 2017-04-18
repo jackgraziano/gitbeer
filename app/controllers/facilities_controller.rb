@@ -11,6 +11,9 @@ class FacilitiesController < ApplicationController
   # GET /facilities/1
   # GET /facilities/1.json
   def show
+    @booking = Booking.new
+    @booking.facility = @facility
+    @booking.user = current_user
   end
 
   # GET /facilities/new

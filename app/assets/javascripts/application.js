@@ -1,6 +1,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require moment
+//= require daterangepicker
 //= require_tree .
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary

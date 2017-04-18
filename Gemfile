@@ -33,3 +33,14 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'devise'
 gem 'faker'
+
+
+# calendar
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
