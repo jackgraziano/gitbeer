@@ -29,3 +29,9 @@ end
 
 gem 'devise'
 gem 'faker'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
