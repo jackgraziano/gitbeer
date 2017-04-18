@@ -17,24 +17,25 @@
           <div class="media-section">
             <h2>Equipaments Description:</h2>
             <p><%= @facility.equipments_description %></p>
+            <%= render partial: 'shared/calendar' %>
           </div>
         </div>
         <div class="media-aside">
           <div class="media-section">
             <h2>Capacity</h2>
-            <p><%= @facility.producing_capability %></p>
+            <p><%= @facility.producing_capability %> bottles/day</p>
           </div>
           <div class="media-section">
             <h2>Address:</h2>
             <p><%= @facility.address %></p>
           </div>
-          <% if @facility.user = current_user %>
+          <% if @facility.user == current_user %>
             <div class="media-section text-center">
               <%= link_to 'Edit', edit_facility_path(@facility), class: "btn btn-primary" %>
               <%= link_to 'Back', facilities_path, class: "btn btn-primary" %>
               <%= link_to 'Delete', facility_path(@facility), method: 'delete', class: "btn btn-danger" %>
           <% else %>
-              <%= link_to 'Rent', root_path, class: "btn btn-success" %>
+              <!-- <input type="text" class="daterange"/> -->
           <% end %>
             </div>
         </div>
