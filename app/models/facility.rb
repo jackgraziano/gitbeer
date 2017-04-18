@@ -8,7 +8,9 @@ class Facility < ApplicationRecord
     self.bookings.each do |booking|
       start_date = booking.start_date
       end_date = booking.end_date
-      booked_dates << (start_date..end_date).to_a.map{ |dt| dt.to_s }
+      if end_date.kind_of?(Date) && start_date.kind_of?(Date) && end_date > start_date
+        booked_dates << (start_date..end_date).to_a.map{ |dt| dt.to_s }
+      end
     end
     return booked_dates.flatten
   end
