@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :reviews, through: :bookings
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   def self.find_for_facebook_oauth(auth)
@@ -29,5 +30,8 @@ class User < ApplicationRecord
     return user
   end
 
+
+
+  mount_uploader :photo, PhotoUploader
 
 end
