@@ -1,14 +1,28 @@
-
 <div class="container">
 <p id="notice"><%= notice %></p>
-<h1>My Facilities</h1>
-  <div class="row">
-    <% @facilities.each do |f| %>
-      <div class="col-xs-12 col-sm-4 card-padding-botton">
-        <%= render "shared/card",facility: f %>
+
+<% if @facilities.count == 0 %>
+
+  <h1>You have none!</h1>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 card-padding-botton card-padding-top">
+        <%= link_to 'Star to brew!!', new_facility_path, class: 'btn btn-danger' %>
       </div>
-    <% end %>
-    <%= link_to 'New Facility', new_facility_path, class: 'btn btn-primary' %>
-  </div>
+    </div>
+
+<% else %>
+
+  <h1>My Facilities</h1>
+    <div class="row">
+      <% @facilities.each do |f| %>
+        <div class="col-xs-12 col-sm-4 card-padding-botton">
+          <%= render "shared/card",facility: f %>
+        </div>
+      <% end %>
+      <%= link_to 'New Facility', new_facility_path, class: 'btn btn-primary' %>
+    </div>
+
+<% end %>
+
 </div>
 <br>
