@@ -20,7 +20,11 @@
           <div class="media-section">
             <h2>Equipments Description:</h2>
             <p><%= @facility.equipments_description %></p>
+            <!-- Booking if signed in -->
+            <% if user_signed_in? %>
             <%= render partial: 'shared/calendar', locals: {booking: @booking, booked_dates: @booked_dates } %>
+            <% end %>
+
           </div>
         </div>
         <div class="media-aside">
