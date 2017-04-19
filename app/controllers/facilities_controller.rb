@@ -58,6 +58,7 @@ class FacilitiesController < ApplicationController
   def update
     respond_to do |format|
       if @facility.update(facility_params)
+        raise
         format.html { redirect_to @facility, notice: 'Facility was successfully updated.' }
         format.json { render :show, status: :ok, location: @facility }
       else
@@ -90,6 +91,6 @@ class FacilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def facility_params
-      params.require(:facility).permit(:name, :description, :equipments_description, :producing_capability, :address, :user_id, photos: [])
+      params.require(:facility).permit(:name, :description, :equipments_description, :producing_capability, :address, :user_id, photos:[])
     end
 end
