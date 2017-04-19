@@ -1,3 +1,28 @@
-<h1>Bookings' index</h1>
+<div class="container">
+  <h1>Minhas reservas</h1>
+    <h3>Reservas que realizei</h3>
 
-<p>Show the user's bookings.</p>
+    <% @my_own_bookings.each do |booking| %>
+      <div class="row">
+
+        <div class="envelope">
+          <div class="brewer col-xs-12 col-sm-6">
+            <p>Cervejaria: <%= booking.facility.name %></p>
+            <p>Endereço: <%= booking.facility.address %></p>
+          </div>
+
+          <div class="booking col-xs-12 col-sm-6">
+            <p>De <%= booking.start_date.strftime("%d-%m-%Y") %> a <%= booking.end_date.strftime("%d-%m-%Y") %> </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+</div>
+
+
+
+<h3>Bookings em minhas cervejarias</h3>
+<% @bookings_in_my_facilities.each do |booking| %>
+  <p><%= booking.start_date %>, <%= booking.end_date %></p>
+<% end %>

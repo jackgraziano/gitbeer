@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   devise :omniauthable, :omniauth_providers => [:facebook, :linkedin]
 
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
@@ -52,6 +53,14 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  def my_own_bookings
+    return bookings
+  end
+
+  def bookings_in_my_facilities
+    return facilities.map(&:bookings).flatten
   end
 
 end
