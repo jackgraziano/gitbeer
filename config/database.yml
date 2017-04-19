@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: gitbeer_production
-  username: gitbeer
-  password: <%= ENV['GITBEER_DATABASE_PASSWORD'] %>
