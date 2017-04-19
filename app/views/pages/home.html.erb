@@ -20,45 +20,18 @@
     </div>
     <div class="wrapper-grey">
       <div class="container">
-        <h2 class="text-center">Onde produzir sua cerveja...</h2>
+        <h3 class="text-center">Algumas cervejarias incríveis para produzir sua cerveja...</h3>
         <br>
         <div class="row">
-          <div class="col-xs-12 col-sm-4">
-            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/card-paris.jpg');">
-              <div class="card-category">Paris</div>
-              <div class="card-description">
-                <h2>Seb's home</h2>
-                <p>Charming room with patio</p>
-              </div>
-              <img class="card-user avatar avatar-large" src="images/seb.jpg">
-              <a class="card-link" href="#" ></a>
+          <% @facilities.each do |f| %>
+            <div class="col-xs-12 col-sm-4 card-padding-botton">
+              <%= render "/shared/card",facility: f %>
             </div>
-          </div>
-          <div class="col-xs-12 col-sm-4">
-            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/card-brussels.jpeg');">
-              <div class="card-category">Brussels</div>
-              <div class="card-description">
-                <h2>Anne's home</h2>
-                <p>Lovely house</p>
-              </div>
-              <img class="card-user avatar avatar-large" src="images/anne.jpg">
-              <a class="card-link" href="#" ></a>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-4">
-            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/card-london.jpeg');">
-              <div class="card-category">London</div>
-              <div class="card-description">
-                <h2>Romain's home</h2>
-                <p>Nice flat in Piccadilly</p>
-              </div>
-              <img class="card-user avatar avatar-large" src="images/romain.jpeg">
-              <a class="card-link" href="#" ></a>
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
+
 
     <div class="text-center padded" id="newsletter">
       <h2>Quer aprender mais sobre cervejas?</h2>
