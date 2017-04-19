@@ -1,5 +1,7 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name), class: "btn btn-primary" %>
+  <%= link_to new_session_path(resource_name) do %>
+    <i class="fa fa-sign-in"></i> <%= t(".profile", default: "Log in") %>
+  <% end %>
   <br />
 <% end -%>
 
