@@ -9,7 +9,8 @@ class BookingsController < ApplicationController
   end
 
   def index
-
+    @my_own_bookings = User.find(current_user).my_own_bookings
+    @bookings_in_my_facilities = User.find(current_user).bookings_in_my_facilities
   end
 
   private
