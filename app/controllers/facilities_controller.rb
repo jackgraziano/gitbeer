@@ -1,6 +1,5 @@
 class FacilitiesController < ApplicationController
   before_action :set_facility, only: [:show, :edit, :update, :destroy]
-  before_action :set_states, only: [:edit, :new]
   before_action :set_current_user
 
   # GET /facilities
@@ -10,7 +9,14 @@ class FacilitiesController < ApplicationController
   end
 
   def search
-    @facilities = Facility.where(address: params[:address])
+
+    @facilities = Facility.near(params[:address], 5000)
+
+    @hash = Gmaps4rails.build_markers(@facilities) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
   # GET /facilities/1
   # GET /facilities/1.json
@@ -77,9 +83,6 @@ class FacilitiesController < ApplicationController
       @facility = Facility.find(params[:id])
     end
 
-    def set_states
-      @states = %w(AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO)
-    end
     # UserID
     def set_current_user
       @current_user = current_user

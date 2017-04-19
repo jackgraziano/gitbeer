@@ -3,7 +3,7 @@
         <h1>FAÇA SUA CERVEJA</h1>
         <p>Encontre os melhores lugares para produzir a sua cerveja artesanal.</p>
         <form method="get" action="<%= search_facilities_path %>" class="form-inline">
-          <%= select_tag "address", options_for_select(@states), class: "form-control input-lg", include_blank: "Onde você está?" %>
+          <input type="text" class="form-control input-lg" name="address" placeholder="Onde você está?">
           <input type="submit" class="btn btn-danger btn-lg" value="Search">
         </form>
       </div>
