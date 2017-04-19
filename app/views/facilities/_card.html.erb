@@ -1,7 +1,9 @@
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path facility.photos.first.path %>')">
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo_from_facility(facility) %>')">
   <div class="card-category"><h2><%= facility.name%></h2></div>
   <div class="card-description">
     <p><%= facility.description %></p>
   </div>
   <%= link_to "", facility_path(facility), class: "card-link" %>
 </div>
+
+
