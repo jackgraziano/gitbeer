@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <% @facilities.each do |f| %>
         <div class="col-xs-12 col-md-6 card-padding-botton">
-          <%= render "card",facility: f %>
+          <%= render "/shared/card",facility: f %>
         </div>
       <% end %>
     </div>

@@ -16,7 +16,7 @@
     <div class="row">
       <% @facilities.each do |f| %>
         <div class="col-xs-12 col-sm-4 card-padding-botton">
-          <%= render "card",facility: f %>
+          <%= render "shared/card",facility: f %>
         </div>
       <% end %>
       <%= link_to 'New Facility', new_facility_path, class: 'btn btn-primary' %>
