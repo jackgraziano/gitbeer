@@ -1,28 +1,49 @@
 <div class="container">
-  <h1>Minhas reservas</h1>
+  <h1>Reservas</h1>
     <h3>Reservas que realizei</h3>
 
     <% @my_own_bookings.each do |booking| %>
       <div class="row">
 
-        <div class="envelope">
-          <div class="brewer col-xs-12 col-sm-6">
-            <p>Cervejaria: <%= booking.facility.name %></p>
+        <div class="bookings-envelope">
+          <div class="bookings-brewer col-xs-12 col-sm-4">
+            <p>Cervejaria: <%= link_to booking.facility.name, facility_path(booking.facility) %></p>
             <p>Endereço: <%= booking.facility.address %></p>
           </div>
 
-          <div class="booking col-xs-12 col-sm-6">
+          <div class="bookings-dates col-xs-12 col-sm-4">
             <p>De <%= booking.start_date.strftime("%d-%m-%Y") %> a <%= booking.end_date.strftime("%d-%m-%Y") %> </p>
           </div>
+
+          <div class="bookings-photo col-xs-12 col-sm-4">
+          <%= cl_image_tag photo_from_booking(booking), height: 200, width: 400, crop: :fill %>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+
+    <h3>Reservas em minhas cervejarias</h3>
+
+    <% @bookings_in_my_facilities.each do |booking| %>
+      <div class="row">
+
+        <div class="bookings-envelope">
+          <div class="bookings-brewer col-xs-12 col-sm-4">
+            <p>Cervejaria: <%= link_to booking.facility.name, facility_path(booking.facility) %></p>
+            <p>Endereço: <%= booking.facility.address %></p>
+          </div>
+
+          <div class="bookings-dates col-xs-12 col-sm-4">
+            <p>De <%= booking.start_date.strftime("%d-%m-%Y") %> a <%= booking.end_date.strftime("%d-%m-%Y") %> </p>
+          </div>
+
+          <div class="bookings-photo col-xs-12 col-sm-4">
+          <%= cl_image_tag photo_from_booking(booking), height: 200, width: 400, crop: :fill %>
+          </div>
+
         </div>
       </div>
     <% end %>
 
 </div>
-
-
-
-<h3>Bookings em minhas cervejarias</h3>
-<% @bookings_in_my_facilities.each do |booking| %>
-  <p><%= booking.start_date %>, <%= booking.end_date %></p>
-<% end %>

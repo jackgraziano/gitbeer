@@ -56,7 +56,7 @@ class User < ApplicationRecord
   end
 
   def my_own_bookings
-    return bookings
+    return bookings.where.not(facility: facilities)
   end
 
   def bookings_in_my_facilities
