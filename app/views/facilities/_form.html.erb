@@ -1,3 +1,5 @@
+<div class="col-sm-6">
+
 <%= simple_form_for(@facility) do |f| %>
   <%= f.error_notification %>
 
@@ -7,10 +9,14 @@
     <%= f.input :equipments_description %>
     <%= f.input :producing_capability %>
     <%= f.input :address %>
+  </div>
+</div>
+<div class="col-sm-6">
+  <div class="form-inputs">
     <%= f.input :photos, as: :attachinary %>
   </div>
-
-  <div class="form-actions">
+  <div class="form-actions text-center">
     <%= f.button :submit %>
   </div>
+</div>
 <% end %>
