@@ -3,24 +3,30 @@
       <div class="row">
         <div class="col-xs-12 col-sm-4 features">
           <%= image_tag "mestre.png", class: "home-features" %>
-          <h4>Seja um mestre cervejeiro</h4>
+          <br>
+          <br>
+          <h4><b>Seja um mestre cervejeiro</b></h4>
           <p>Produza como um pro, aprenda com os melhores</p>
         </div>
         <div class="col-xs-12 col-sm-4 features">
           <%= image_tag "sua.png", class: "home-features"  %>
-          <h4>Uma cerveja para chamar de sua</h4>
+          <br>
+          <br>
+          <h4><b>Uma cerveja para chamar de sua</b></h4>
           <p>Desenvolva sua receita, sua marca, seu rótulo</p>
         </div>
         <div class="col-xs-12 col-sm-4 features">
           <%= image_tag "rico.png", class: "home-features"  %>
-          <h4>Ganhe dinheiro</h4>
+          <br>
+          <br>
+          <h4><b>Ganhe dinheiro</b></h4>
           <p>Monte um e-commerce e lucre com suas vendas</p>
         </div>
       </div>
     </div>
-    <div class="home-wrapper-grey">
+    <div class="home-wrapper">
       <div class="container">
-        <h3 class="text-center">Algumas cervejarias incríveis para produzir sua cerveja...</h3>
+        <h2 class="text-center"><b>Algumas cervejarias incríveis para produzir sua cerveja...</b></h2>
         <br>
         <div class="row">
           <% @facilities.each do |f| %>
@@ -42,31 +48,10 @@
       </form>
     </div>
 
-<!--     <div id="map" style="width: 100%;height: 500px;"></div>
- -->
-<%= render 'layouts/footer' %>
-
-
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-
+  <% content_for(:after_js) do %>
     <script type="text/javascript">
-    var myLatlng = new google.maps.LatLng(48.852937,2.364178);
-
-    var myOptions = {
-      zoom: 16,
-      center: myLatlng,
-      scrollwheel: false,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      styles: [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"saturation":-100},{"lightness":30},{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]}]
-    };
-
-    var map = new google.maps.Map(document.getElementById('map'), myOptions);
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title:"You are here!"
+    $(document).ready(function() {
+      $('#landing-hide').hide();
     });
     </script>
-  </body>
-</html>
-
+  <% end %>

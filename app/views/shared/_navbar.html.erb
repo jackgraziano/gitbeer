@@ -1,12 +1,18 @@
-<div class="navbar-wagon">
+<br>
+<br>
+<br>
+<div class="navbar-wagon navbar-fixed-top">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
 
+  <form id="landing-hide" method="get" action="<%= search_facilities_path %>" class="form-inline">
+    <input type="text" class="form-control input-md" name="address" placeholder="Onde você está?">
+    <input type="submit" class="btn btn-danger btn-md" value="Search">
+  </form>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
