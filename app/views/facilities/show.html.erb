@@ -47,6 +47,7 @@
           <div class="action">
             <!-- Booking if signed in -->
             <% if user_signed_in? %>
+            <%= link_to "Send a message", new_facility_conversation_path(@facility.id), class: "btn btn-primary" %>
             <%= render partial: 'shared/calendar', locals: {booking: @booking, booked_dates: @booked_dates } %>
             <% end %>
           </div>
