@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+imagens = %w(http://www.thewaterfrontbrewery.com/wp-content/uploads/2016/05/thebrewery.jpg
+http://www.mikehessbrewing.com/wp-content/uploads/2013/08/Hess_Hero_slider8.jpg
+http://dm8cyuj6t42zr.cloudfront.net/wp-content/uploads/2013/01/24210341/brewery-large.jpg
+http://www.biscaynebaybrewing.com/img/content/about-L.jpg?v=1.0.0)
 
 bairros = %w(Água\ Rasa‎
 Alto\ de\ Pinheiros‎
@@ -111,12 +115,14 @@ end
 
 10.times do
   facility = Facility.new
+  facility.name = "Cervejaria " + Faker::Beer.name
   facility.description = Faker::Company.catch_phrase
   facility.equipments_description = Faker::Hipster.sentences.join(" ")
   facility.producing_capability = ((10..100).to_a.sample)*1000
   facility.address = bairros.sample + ", sao paulo"
   facility.user_id = (1..User.count).to_a.sample
   facility.save
+  facility.photo_urls = [] << imagens.sample
   sleep(5)
 end
 

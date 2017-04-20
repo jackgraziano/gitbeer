@@ -1,7 +1,14 @@
 
 <div class="container">
-<p id="notice"><%= notice %></p>
-<h1>Facilities</h1>
+  <p id="notice"><%= notice %></p>
+  <div class="text-center">
+    <h1 class="search-title"><b>FIND THE PERFECT BREWERY</b></h1>
+    <form method="get" action="<%= search_facilities_path %>" class="form-inline">
+      <input type="text" class="form-control input-md" name="address" placeholder="Onde você está?">
+      <input type="submit" class="btn btn-danger btn-md" value="Search">
+    </form>
+  </div>
+  <br>
   <div class="row">
     <div class="col-md-6">
       <% @facilities.each do |f| %>
