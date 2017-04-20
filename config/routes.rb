@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
-  devise_for :users,
-        controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  # Authentication
+  root to: 'pages#home'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  get '/users/auth/linkedin', to: 'users/omniauth_callbacks#linkedin', as: 'oauth_linkedin_callback'
+
+  # Facilities
   resources :facilities do
     collection do
       get 'search'
     end
   end
-  resources :bookings
-  root to: 'pages#home'
+
+  # Attachinary
   mount Attachinary::Engine => "/attachinary"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/users/auth/linkedin', to: 'users/omniauth_callbacks#linkedin', as: 'oauth_linkedin_callback'
+  # Bookings
+  resources :bookings
 
-
+  # Messaging
+  resources :conversations, only: [:index, :show]
+  resources :messages, only: [:create]
 end

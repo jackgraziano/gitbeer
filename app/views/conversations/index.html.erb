@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Beer Messager</h1>
+
+  <% @conversations.each do |conversation| %>
+    <div class="conversation-message">
+
+      <p>
+        <span class="conversation-title">From: </span>
+        <span class="conversation-content"><%=conversation.messages.last.user.email %></span>
+      </p>
+
+      <p>
+        <span class="conversation-title">To: </span>
+        <span class="conversation-content"><%= receivers conversation %></span>
+      </p>
+
+      <p>
+        <span class="conversation-title">Last message: </span>
+        <span class="conversation-content"><%=conversation.messages.last.message %></span>
+      </p>
+
+      <%= link_to "", conversation_path(conversation), class:"conversation-link" %>
+    </div>
+
+  <% end %>
+
+</div>

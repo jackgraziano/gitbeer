@@ -1,0 +1,30 @@
+<div class="container">
+
+  <h1>Messages</h1>
+
+  <% @conversation.messages.each do |message| %>
+
+    <div class="conversation-message">
+
+      <p>
+        <span class="conversation-title">From: </span>
+        <span class="conversation-content"><%=message.user.email %></span>
+      </p>
+
+      <p>
+        <span class="conversation-content"><%=message.message %></span>
+      </p>
+
+    </div>
+
+  <% end %>
+
+  <%= simple_form_for @message do |f| %>
+    <%= f.input :message %>
+    <%= f.input :conversation_id, :as => :hidden, :input_html => { value: @conversation.id } %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { value: current_user.id } %>
+    <%= f.submit %>
+  <% end %>
+
+
+</div>

@@ -1,0 +1,32 @@
+.conversation-message{
+  background-color: #CF4600;
+  color: white;
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.conversation-message:hover{
+  background-color:#EE9114;
+}
+
+.conversation-title{
+  font-size: 16px;
+}
+
+.conversation-content{
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.conversation-link{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
