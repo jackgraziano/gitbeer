@@ -1,41 +1,55 @@
+<div class="facility-wrapper container">
+  <div class="text-center title-paddin-bottom">
+    <h2 class="product-title"><%= @facility.name %></h2>
+  </div>
+      <div class="row">
+        <div class="preview col-xs-12 col-md-6">
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <p id="notice"><%= notice %></p>
-      <div class="media">
-        <div class="media-body">
-          <div class="media-section">
-            <h1>
-              <strong>Name:</strong>
-              <%= @facility.name %>
-            </h1>
+          <div class="preview-pic tab-content">
+            <% i = 1 %>
             <% @facility.photos.each do |photo| %>
-              <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+              <% i == 1 ? active =  'tab-pane active' : active = 'tab-pane' %>
+              <% pic = "pic-#{i.to_s}" %>
+                <div class="<%= active %>" id="<%= pic %>"><%= cl_image_tag photo.path, height:300, width:400, :background=>"black", :crop=>"lpad" %></div>
+            <% i += 1 %>
             <% end %>
-            <h2>Description</h2>
-            <p><%= @facility.description %></p>
           </div>
-          <div class="media-section">
-            <h2>Equipments Description:</h2>
+
+          <ul class="preview-thumbnail nav nav-tabs">
+            <% i = 1 %>
+            <% @facility.photos.each do |photo| %>
+              <% pic = "#pic-#{i.to_s}" %>
+              <li><a data-target="<%= pic %>" data-toggle="tab"><%= cl_image_tag photo.path, :background=>"black", :crop=>"lpad" %></a></li>
+            <% i += 1 %>
+            <% end %>
+          </ul>
+
+        </div>
+
+        <div class="details col-xs-12 col-md-6">
+          <!-- div para rating e reviews -->
+<!--               <div class="stars">
+          <div class="rating">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <span class="review-no">41 reviews</span>
+          </div> -->
+
+          <p class="product-description"><%= @facility.description %></p>
+          <h4 class="capacity">Capacidade: <span><%= @facility.producing_capability %> bottles/day</span></h4>
+          <h4 class="eq-description">Equipaments Description:</h4>
             <p><%= @facility.equipments_description %></p>
+          <div class="action">
             <!-- Booking if signed in -->
             <% if user_signed_in? %>
             <%= render partial: 'shared/calendar', locals: {booking: @booking, booked_dates: @booked_dates } %>
             <% end %>
+          </div>
 
-          </div>
-        </div>
-        <div class="media-aside">
-          <div class="media-section">
-            <h2>Capacity</h2>
-            <p><%= @facility.producing_capability %> bottles/day</p>
-          </div>
-          <div class="media-section">
-            <h2>Address:</h2>
-            <p><%= @facility.address %></p>
-          </div>
           <% if @facility.user == current_user %>
             <div class="media-section text-center">
               <%= link_to 'Edit', edit_facility_path(@facility), class: "btn btn-primary" %>
@@ -43,10 +57,9 @@
               <%= link_to 'Delete', facility_path(@facility), method: 'delete', class: "btn btn-danger" %>
           <% else %>
               <!-- <input type="text" class="daterange"/> -->
-          <% end %>
             </div>
+          <% end %>
+
         </div>
       </div>
-    </div>
   </div>
-</div>
