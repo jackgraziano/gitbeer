@@ -43,13 +43,13 @@
           <h4 class="capacity">Capacidade: <span><%= @facility.producing_capability %> bottles/day</span></h4>
           <h4 class="eq-description">Equipaments Description:</h4>
             <p><%= @facility.equipments_description %></p>
+
           <div class="action">
             <!-- Booking if signed in -->
             <% if user_signed_in? %>
             <%= render partial: 'shared/calendar', locals: {booking: @booking, booked_dates: @booked_dates } %>
             <% end %>
           </div>
-
           <% if @facility.user == current_user %>
             <div class="media-section text-center">
               <%= link_to 'Edit', edit_facility_path(@facility), class: "btn btn-primary" %>
