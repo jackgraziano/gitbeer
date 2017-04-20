@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resources :conversations, only: [:new, :create]
   end
 
   # Attachinary
