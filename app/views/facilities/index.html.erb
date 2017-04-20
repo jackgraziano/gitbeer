@@ -1,16 +1,17 @@
 <div class="container">
 <% if @facilities.count == 0 %>
 
-  <h1>You have none!</h1>
+  <h2 class="title text-center"><b>You have none!</b></h2>
   <div class="row">
     <div class="col-xs-12 col-sm-4 card-padding-botton card-padding-top">
-      <%= link_to 'Star to brew!!', new_facility_path, class: 'btn btn-danger' %>
+      <%= link_to 'Start to brew!!', new_facility_path, class: 'btn btn-danger' %>
     </div>
   </div>
 
 <% else %>
 
-  <h1>My Facilities</h1>
+  <h2 class="title"><b>My Facilities</b></h2>
+  <br>
   <div class="row">
     <% @facilities.each do |f| %>
       <div class="col-xs-12 col-sm-4 card-padding-botton">
@@ -18,7 +19,7 @@
       </div>
     <% end %>
   </div>
-
+  <%= link_to 'Add a new facility!', new_facility_path, class: 'btn btn-danger' %>
 <% end %>
 
 </div>
