@@ -43,10 +43,32 @@
           <h4 class="capacity">Capacidade: <span><%= @facility.producing_capability %> bottles/day</span></h4>
           <h4 class="eq-description">Equipaments Description:</h4>
             <p><%= @facility.equipments_description %></p>
+
           <div class="action">
             <!-- Booking if signed in -->
             <% if user_signed_in? %>
             <%= render partial: 'shared/calendar', locals: {booking: @booking, booked_dates: @booked_dates } %>
+            <% end %>
+          </div>
+
+            <div class="facility-map-padding" id="map" style="width: 100%; height: 300px;"></div>
+
+            <% content_for(:after_js) do %>
+              <%= javascript_tag do %>
+                $(document).ready(function() {
+                  var handler = Gmaps.build('Google');
+                  handler.buildMap({ internal: { id: 'map' } }, function() {
+                    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                    handler.bounds.extendWith(markers);
+                    handler.fitMapToBounds();
+                    if (markers.length == 0) {
+                      handler.getMap().setZoom(2);
+                    } else if (markers.length == 1) {
+                      handler.getMap().setZoom(14);
+                    }
+                  });
+                });
+              <% end %>
             <% end %>
           </div>
 
