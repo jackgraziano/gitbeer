@@ -12,10 +12,17 @@ class FacilitiesController < ApplicationController
 
     @facilities = Facility.near(params[:address], 5000)
 
-    @hash = Gmaps4rails.build_markers(@facilities) do |flat, marker|
-      marker.lat flat.latitude
-      marker.lng flat.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    @hash = Gmaps4rails.build_markers(@facilities) do |facility, marker|
+      marker.lat facility.latitude
+      marker.lng facility.longitude
+      marker.picture({
+                        :url    => ActionController::Base.helpers.asset_url("beer_icon2.png"),
+                        :width  => "42",
+                        :height => "42",
+
+                       })
+      # marker.infowindow('<h3><%= facility.name %></h3><p><%= facility.description %><p>')
+      marker.infowindow render_to_string(partial: "/facilities/map_box", locals: { facility: facility })
     end
   end
   # GET /facilities/1
@@ -58,7 +65,6 @@ class FacilitiesController < ApplicationController
   def update
     respond_to do |format|
       if @facility.update(facility_params)
-        raise
         format.html { redirect_to @facility, notice: 'Facility was successfully updated.' }
         format.json { render :show, status: :ok, location: @facility }
       else
