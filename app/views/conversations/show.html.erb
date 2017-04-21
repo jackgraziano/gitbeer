@@ -3,37 +3,9 @@
   <div class="wrap-messages">
     <h1>Messages</h1>
 
-    <% @conversation.messages.each do |message| %>
-      <% if message.user == current_user %>
+    <%= render 'message' %>
 
-        <div class="row single-message">
-          <div class="col-xs-12 col-sm-1">
-            <%= render partial: 'photo', locals:{user: current_user} %>
-          </div>
-          <div class="col-xs-12 col-sm-11">
-            <div class="message-box">
-              <%= render partial: 'message', locals: { message: message } %>
-            </div>
-          </div>
-        </div>
-
-      <% else %>
-
-        <div class="row single-message">
-          <div class="col-xs-12 col-sm-11">
-            <div class="message-box">
-              <%= render partial: 'message', locals: { message: message } %>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-1">
-            <%= render partial: 'photo', locals:{user: message.user} %>
-          </div>
-        </div>
-
-      <% end %>
-    <% end %>
-
-    <%= simple_form_for @message do |f| %>
+    <%= simple_form_for(@message, remote: true) do |f| %>
       <%= f.input :message %>
       <%= f.input :conversation_id, :as => :hidden, :input_html => { value: @conversation.id } %>
       <%= f.input :user_id, :as => :hidden, :input_html => { value: current_user.id } %>
