@@ -3,20 +3,32 @@
   <h1>Messages</h1>
 
   <% @conversation.messages.each do |message| %>
+    <% if message.user = current_user %>
+      <div class="conversation-message">
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
 
-    <div class="conversation-message">
 
-      <p>
-        <span class="conversation-title">From: </span>
-        <span class="conversation-content"><%=message.user.email %></span>
-      </p>
+        <% if !current_user.facebook_picture_url.nil? %>
 
-      <p>
-        <span class="conversation-content"><%=message.message %></span>
-      </p>
+            <% avatar_url = current_user.facebook_picture_url %>
+            <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
-    </div>
+          <% elsif current_user.photo.nil? %>
+            <%= image_tag "http://placehold.it/50x50", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
+          <% else %>
+             <%= cl_image_tag current_user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
+
+
+          </div>
+          <div class="col-xs-12 col-sm-9">
+            <%= render partial: 'message', locals: { message: message } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 
   <%= simple_form_for @message do |f| %>
