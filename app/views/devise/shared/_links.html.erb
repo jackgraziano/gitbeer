@@ -7,7 +7,7 @@
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to new_registration_path(resource_name) do %>
-    <i class="fa fa-sign-in"></i> <%= t(".profile", default: "Sing up") %>
+    <i class="fa fa-sign-in"></i> <%= t(".profile", default: "Sign up") %>
   <% end %>
   <br />
 <% end -%>

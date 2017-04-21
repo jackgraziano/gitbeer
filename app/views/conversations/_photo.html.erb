@@ -1,0 +1,11 @@
+<% if !user.facebook_picture_url.nil? %>
+  <% avatar_url = user.facebook_picture_url %>
+  <%= image_tag avatar_url, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
+<% elsif user.photo.nil? %>
+  <%= image_tag "http://placehold.it/50x50", class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
+<% else %>
+  <%= cl_image_tag user.photo.path, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
+<% end %>
