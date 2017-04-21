@@ -1,7 +1,31 @@
-<p>
-  <span class="conversation-title">From: </span>
-  <span class="conversation-content"><%=message.user.email %></span>
-</p>
-<p>
-  <span class="conversation-content"><%=message.message %></span>
-</p>
+<div id="messages-to-update">
+  <% @conversation.messages.each do |message| %>
+    <% if message.user == current_user %>
+
+      <div class="row single-message">
+        <div class="col-xs-12 col-sm-1">
+          <%= render partial: 'conversations/photo', locals:{user: current_user} %>
+        </div>
+        <div class="col-xs-12 col-sm-11">
+          <div class="message-box">
+            <%= render partial: 'conversations/message_data', locals: { message: message } %>
+          </div>
+        </div>
+      </div>
+
+    <% else %>
+
+      <div class="row single-message">
+        <div class="col-xs-12 col-sm-11">
+          <div class="message-box">
+            <%= render partial: 'conversations/message_data', locals: { message: message } %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-1">
+          <%= render partial: 'conversations/photo', locals:{user: message.user} %>
+        </div>
+      </div>
+
+    <% end %>
+  <% end %>
+</div>
